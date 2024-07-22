@@ -27,8 +27,22 @@ def calcular():
         else:
             print("No se puede dividir por cero.")
     else:
-        print("Operación no válida. Inténtelo de nuevo.")    
+        print("Operación no válida. Inténtelo de nuevo.")   
+        
+while True:
+    calcular()
+    continuar = input("¿Desea realizar otro cálculo? (s/n): ")
+    try:
+        if continuar.lower() == 'n':
+            print("Gracias por usar el programa. ¡Hasta luego!")
+            break
+        elif continuar.lower()=="s":
+            calcular()
+            
+        else:
+            raise ValueError("Ingrese una opcion valida")  
+    except ValueError as error:
+        print(error)   
         
 
-calcular()
 
