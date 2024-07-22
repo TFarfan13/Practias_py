@@ -30,3 +30,5 @@ def calcular():
         print("Operación no válida. Inténtelo de nuevo.")    
         
 
+calcular()
+
