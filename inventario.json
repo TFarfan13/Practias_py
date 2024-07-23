@@ -1,0 +1,14 @@
+{
+    "1": {
+        "nombre": "YOGUR",
+        "precio": 20,
+        "fecha_vencimiento": "02/2025",
+        "cantidad": 10
+    },
+    "2": {
+        "nombre": "papafritas",
+        "precio": 2.5,
+        "fecha_vencimiento": "12/2024",
+        "cantidad": 28
+    }
+}
