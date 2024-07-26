@@ -1,4 +1,5 @@
-print("Calculadora ")
+print("Calculadora")
+
 def calcular():
     print("Introduzca 2 números, luego seleccione la operación.")
     
@@ -45,4 +46,5 @@ while True:
         print(error)   
         
 print("FIN DEL PROGRAMA")
+print("ADIOS")
  
