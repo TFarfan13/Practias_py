@@ -27,11 +27,11 @@ class Inventario:
         except FileNotFoundError:
             self.productos = {}
 
-    def añadir_prod(self, producto):
+    def añadir_prod(self,producto):
         if producto.id_producto in self.productos:
             print(f"El producto con ID {producto.id_producto} ya existe en el inventario.")
         else:
-            self.productos[producto.id_producto] = producto.to_dict()
+            self.productos['producto.id_producto'] = producto.to_dict()
             self.guardar()
             print(f"Producto {producto.nombre} añadido con éxito.")
             
@@ -53,7 +53,13 @@ class Inventario:
             print(f"Producto {id_producto} actualizado.")
         else:
             print("Producto no encontrado")
-
+            
+    def eliminar_producto(self,id_producto):
+        if id_producto in self.productos:
+            del self.productos[id_producto]
+            self.guardar()
+            print("Producto eliminado con exito")
+            
     def mostrar_producto(self, id_producto):
         if id_producto in self.productos:
             producto = self.productos[id_producto]
@@ -61,7 +67,7 @@ class Inventario:
                   f"Nombre: {producto['nombre']}\n"
                   f"Precio: {producto['precio']}\n"
                   f"Fecha de Vencimiento: {producto['fecha_vencimiento']}\n"
-                  f"Cantidad: {producto['cantidad']}")
+                  f"Cantidad: {producto['cantidad']}")  
         else:
             print("Producto no encontrado en el inventario.")
 
@@ -135,7 +141,7 @@ def menu():
         if opcion == "1":
             producto = solicitar_datos_producto()
             inventario.añadir_prod(producto)
-        elif opcion == "2":
+        elif opcion == "2":#Por cuestiones de tiempo no llegue a agregar try and except para posibles erroes en los input
             id_producto = input("Ingrese el ID del producto a actualizar: ")
             print("Deje en blanco los campos que no quiera actualizar")
             nombre = input("Ingrese el nuevo nombre (o presione Enter para dejar sin cambios): ")
@@ -149,13 +155,27 @@ def menu():
             cantidad = int(cantidad) if cantidad else None
             
             inventario.actualizar(id_producto, nombre, precio, fecha_vencimiento, cantidad)
+            
         elif opcion == "3":
             id_producto = input("Ingrese el ID del producto a mostrar: ")
             inventario.mostrar_producto(id_producto)
-            
-            
+
+               
         elif opcion== "4":
-            pass
+            id_producto=input("Por favor Ingrese l ID del producto a eliminar")
+            print(f"Va a eliminar el producto {id_producto}")
+            inventario.mostrar_producto(id_producto)
+            print("Que desea hacer ?")
+            print("1.Eliminar")
+            print("2.Cancelar")
+            opcion=input("Ingrese opcion")
+            if opcion=="1":
+                inventario.eliminar_producto(id_producto)
+                
+            elif opcion=="2":
+                menu()
+            
+        
         elif opcion == "5":
             print("Saliendo del programa.")
             break

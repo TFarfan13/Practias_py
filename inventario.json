@@ -10,5 +10,12 @@
         "precio": 2.5,
         "fecha_vencimiento": "12/2024",
         "cantidad": 28
+    },
+    "producto.id_producto": {
+        "id_producto": "3",
+        "nombre": "tomate",
+        "precio": 3.4,
+        "fecha_vencimiento": "11/2026",
+        "cantidad": 100
     }
 }
